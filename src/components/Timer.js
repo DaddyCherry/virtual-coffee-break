@@ -4,6 +4,7 @@ function Timer() {
     const [time, setTime] = useState(0);
     const [isActive, setIsActive] = useState(false);
     const [inputTime, setInputTime] = useState("10:00");
+    const [buttonText, setButtonText] = useState("Start");
 
     useEffect(() => {
         let interval = null;
@@ -33,6 +34,7 @@ function Timer() {
         const seconds = calculateTimeInSeconds(inputTime);
         setTime(seconds);
         setIsActive(true);
+        setButtonText("Started"); // ボタンのテキストを変更
     };
 
     const formatTime = (seconds) => {
@@ -52,7 +54,7 @@ function Timer() {
                 placeholder="HH:MM"
             />
             <button onClick={startCountdown}>
-                Start Countdown
+                {buttonText}
             </button>
         </div>
     );
