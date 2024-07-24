@@ -44,6 +44,10 @@ body {
     color: #3e2723; /* コーヒーっぽい色に変更 */
 }
 
+.timer-display.hidden {
+    display: none; /* 非表示にする */
+}
+
 /* 次のセッション開始時間のスタイル */
 .timer-next-session {
     font-size: 22px; /* フォントサイズを大きくする */

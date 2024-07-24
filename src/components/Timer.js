@@ -17,6 +17,7 @@ function Timer() {
             }, 1000);
         } else {
             clearInterval(interval);
+            setTime(0); // カウントダウンが停止したときに時間をリセット
         }
         return () => clearInterval(interval);
     }, [isActive]);
@@ -75,9 +76,19 @@ function Timer() {
         }
     };
 
+    function updateTimerDisplay(time) {
+        const timerDisplay = document.querySelector('.timer-display');
+        if (time === '00:00:00') {
+            timerDisplay.classList.add('hidden'); // 非表示にする
+        } else {
+            timerDisplay.classList.remove('hidden'); // 表示する
+        }
+        timerDisplay.textContent = time;
+    }
+
     return (
         <div className="timer-container">
-            <h1 className="timer-display">{formatTime(time)}</h1>
+            <h1 className={`timer-display ${time === 0 ? 'hidden' : ''}`}>{formatTime(time)}</h1>
             <p className="timer-next-session">Next session start time is: {targetTime}</p>
             <input 
                 type="text" 
