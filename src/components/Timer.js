@@ -86,6 +86,12 @@ function Timer() {
         timerDisplay.textContent = time;
     }
 
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            startCountdown();
+        }
+    };
+
     return (
         <div className="timer-container">
             <h1 className={`timer-display ${time === 0 ? 'hidden' : ''}`}>{formatTime(time)}</h1>
@@ -94,6 +100,7 @@ function Timer() {
                 type="text" 
                 value={inputTime} 
                 onChange={(e) => setInputTime(e.target.value)} 
+                onKeyPress={handleKeyPress} // エンターキーのイベントを追加
                 placeholder="HH:MM"
                 className="timer-input"
             />
