@@ -1,34 +1,37 @@
 import React, { useState, useEffect } from 'react';
 
 function Timer() {
-    const [seconds, setSeconds] = useState(0);
+    const [time, setTime] = useState(0);
     const [isActive, setIsActive] = useState(false);
+    const [inputTime, setInputTime] = useState(60);
 
     useEffect(() => {
         let interval = null;
         if (isActive) {
             interval = setInterval(() => {
-                setSeconds(seconds => seconds + 1);
+                setTime(time => time > 0 ? time - 1 : 0);
             }, 1000);
-        } else if (!isActive && seconds !== 0) {
+        } else if (!isActive && time !== 0) {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
-    }, [isActive, seconds]);
+    }, [isActive, time]);
 
-    const reset = () => {
-        setSeconds(0);
-        setIsActive(false);
+    const startCountdown = () => {
+        setTime(inputTime);
+        setIsActive(true);
     };
 
     return (
         <div>
-            <h1>{seconds}s</h1>
-            <button onClick={() => setIsActive(!isActive)}>
-                {isActive ? 'Pause' : 'Start'}
-            </button>
-            <button onClick={reset}>
-                Reset
+            <h1>{time}s</h1>
+            <input 
+                type="number" 
+                value={inputTime} 
+                onChange={(e) => setInputTime(Number(e.target.value))} 
+            />
+            <button onClick={startCountdown}>
+                Start Countdown
             </button>
         </div>
     );
