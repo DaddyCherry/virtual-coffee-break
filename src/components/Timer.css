@@ -4,8 +4,8 @@ body {
     background-size: cover; /* イメージをカバーする */
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh; /* ビューポート全体の高さを確保 */
+    align-items: flex-start; /* 上に配置 */
+    height: 50vh; /* ビューポートの半分の高さに変更 */
     margin: 0; /* 余白をリセット */
 }
 
@@ -20,8 +20,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-    width: 350px; /* 幅を広げる */
-    height: 250px; /* 高さを広げる */
+    width: 400px; /* 幅を広げる */
+    height: 300px; /* 高さを広げる */
     overflow: hidden;
 }
 
@@ -38,7 +38,7 @@ body {
 
 /* タイマーの表示スタイル */
 .timer-display {
-    font-size: 48px;
+    font-size: 56px; /* フォントサイズを大きくする */
     font-weight: bold;
     margin-bottom: 10px;
     color: #3e2723; /* コーヒーっぽい色に変更 */
@@ -46,14 +46,14 @@ body {
 
 /* 次のセッション開始時間のスタイル */
 .timer-next-session {
-    font-size: 18px;
+    font-size: 22px; /* フォントサイズを大きくする */
     color: #5d4037; /* コーヒーっぽい色に変更 */
     margin-bottom: 20px;
 }
 
 /* 入力フィールドのスタイル */
 .timer-input {
-    font-size: 16px;
+    font-size: 18px; /* フォントサイズを大きくする */
     padding: 10px;
     border: 1px solid #8d6e63; /* コーヒーっぽい色に変更 */
     border-radius: 5px;
@@ -64,7 +64,7 @@ body {
 
 /* ボタンのスタイル */
 .timer-button {
-    font-size: 16px;
+    font-size: 18px; /* フォントサイズを大きくする */
     padding: 10px 20px;
     color: #fff;
     background-color: #6d4c41; /* ボタンの背景色をコーヒーっぽい色に変更 */
@@ -81,9 +81,9 @@ body {
 /* タイトルのスタイル */
 .app-title {
     font-family: 'Georgia', serif; /* おしゃれなフォントに変更 */
-    font-size: 36px;
-    color: #3e2723; /* コーヒーっぽい色に変更 */
+    font-size: 42px; /* フォントサイズを大きくする */
+    color: #ffffff; /* テキストの色を白に変更 */
     text-align: center;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 影を追加 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 影を濃くして見やすくする */
 }
