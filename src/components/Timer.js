@@ -5,6 +5,8 @@ function Timer() {
     const [isActive, setIsActive] = useState(false);
     const [inputTime, setInputTime] = useState("10:00");
     const [buttonText, setButtonText] = useState("Start");
+    const [targetTime, setTargetTime] = useState("");
+    const [blink, setBlink] = useState(true); // 点滅状態を管理するステート
 
     useEffect(() => {
         let interval = null;
@@ -18,6 +20,13 @@ function Timer() {
         return () => clearInterval(interval);
     }, [isActive]);
 
+    useEffect(() => {
+        const blinkInterval = setInterval(() => {
+            setBlink(prev => !prev);
+        }, 1000); // 1秒ごとに点滅
+        return () => clearInterval(blinkInterval);
+    }, []);
+
     const calculateTimeInSeconds = (timeString) => {
         const [hours, minutes] = timeString.split(":").map(Number);
         const now = new Date();
@@ -27,26 +36,36 @@ function Timer() {
             target.setDate(target.getDate() + 1); // 翌日の時刻に設定
         }
         const diff = target - now;
-        return Math.max(Math.floor(diff / 1000), 0);
+        return { 
+            seconds: Math.max(Math.floor(diff / 1000), 0), 
+            targetTime: target.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) // HH:MM形式に変更
+        };
     };
 
     const startCountdown = () => {
-        const seconds = calculateTimeInSeconds(inputTime);
+        const { seconds, targetTime } = calculateTimeInSeconds(inputTime);
         setTime(seconds);
+        setTargetTime(targetTime);
         setIsActive(true);
         setButtonText("Started"); // ボタンのテキストを変更
     };
 
     const formatTime = (seconds) => {
-        const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
-        const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
-        const s = (seconds % 60).toString().padStart(2, '0');
-        return `${h}:${m}:${s}`;
+        if (seconds >= 3600) {
+            const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
+            const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
+            return `${h}${blink ? ':' : ' '}${m}`; // 点滅する「:」
+        } else {
+            const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+            const s = (seconds % 60).toString().padStart(2, '0');
+            return `${m}${blink ? ':' : ' '}${s}`; // 点滅する「:」
+        }
     };
 
     return (
         <div>
             <h1>{formatTime(time)}</h1>
+            <p>{targetTime}</p>
             <input 
                 type="text" 
                 value={inputTime} 
