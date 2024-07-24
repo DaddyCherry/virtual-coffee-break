@@ -54,11 +54,23 @@ function Timer() {
         if (seconds >= 3600) {
             const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
             const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
-            return `${h}${blink ? ':' : ' '}${m}`; // 点滅する「:」
+            return (
+                <span>
+                    {h}
+                    <span style={{ visibility: blink ? 'visible' : 'hidden' }}>:</span>
+                    {m}
+                </span>
+            );
         } else {
             const m = Math.floor(seconds / 60).toString().padStart(2, '0');
             const s = (seconds % 60).toString().padStart(2, '0');
-            return `${m}${blink ? ':' : ' '}${s}`; // 点滅する「:」
+            return (
+                <span>
+                    {m}
+                    <span style={{ visibility: blink ? 'visible' : 'hidden' }}>:</span>
+                    {s}
+                </span>
+            );
         }
     };
 
