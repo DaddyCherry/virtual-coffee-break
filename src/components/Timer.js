@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Timer.css'; // CSSファイルをインポート
 
 function Timer() {
     const [time, setTime] = useState(0);
@@ -75,16 +76,17 @@ function Timer() {
     };
 
     return (
-        <div>
-            <h1>{formatTime(time)}</h1>
-            <p>Next session start time is:{targetTime}</p>
+        <div className="timer-container">
+            <h1 className="timer-display">{formatTime(time)}</h1>
+            <p className="timer-next-session">Next session start time is: {targetTime}</p>
             <input 
                 type="text" 
                 value={inputTime} 
                 onChange={(e) => setInputTime(e.target.value)} 
                 placeholder="HH:MM"
+                className="timer-input"
             />
-            <button onClick={startCountdown}>
+            <button onClick={startCountdown} className="timer-button">
                 {buttonText}
             </button>
         </div>
