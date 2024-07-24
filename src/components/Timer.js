@@ -77,7 +77,7 @@ function Timer() {
     return (
         <div>
             <h1>{formatTime(time)}</h1>
-            <p>{targetTime}</p>
+            <p>Next session start time is:{targetTime}</p>
             <input 
                 type="text" 
                 value={inputTime} 

@@ -4,7 +4,7 @@ import Timer from './components/Timer';
 function App() {
   return (
     <div className="App">
-      <h1>タイマーアプリ</h1>
+      <h1>Labo and Coffee break</h1>
       <Timer />
     </div>
   );
