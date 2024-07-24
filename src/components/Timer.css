@@ -1,6 +1,12 @@
 /* ページ全体の背景スタイル */
 body {
-    background-color: #b3e5fc; /* ページ全体の背景を青っぽい色に変更 */
+    background: url('../assets/background.jpg') no-repeat center center fixed; /* 背景イメージを設定 */
+    background-size: cover; /* イメージをカバーする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* ビューポート全体の高さを確保 */
+    margin: 0; /* 余白をリセット */
 }
 
 /* タイマーの全体スタイル */
@@ -9,24 +15,25 @@ body {
     flex-direction: column;
     align-items: center;
     font-family: Arial, sans-serif;
-    background-color: #e0f7fa; /* 背景を薄い青に変更 */
+    background-color: #a1887f; /* タイマーコンテナの背景をコーヒーっぽい色に変更 */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative; /* ホバー効果のために追加 */
-    width: 300px; /* 固定幅を設定 */
-    height: 200px; /* 固定高さを設定 */
-    overflow: hidden; /* コンテンツがはみ出さないようにする */
+    position: relative;
+    width: 350px; /* 幅を広げる */
+    height: 250px; /* 高さを広げる */
+    overflow: hidden;
 }
 
 .timer-container:hover .timer-input,
 .timer-container:hover .timer-button {
-    display: block; /* ホバー時に表示 */
+    opacity: 1; /* ホバー時に表示 */
 }
 
 .timer-input,
 .timer-button {
-    display: none; /* デフォルトで非表示 */
+    opacity: 0; /* デフォルトで非表示 */
+    transition: opacity 0.5s ease; /* やんわり表示 */
 }
 
 /* タイマーの表示スタイル */
@@ -34,12 +41,13 @@ body {
     font-size: 48px;
     font-weight: bold;
     margin-bottom: 10px;
+    color: #3e2723; /* コーヒーっぽい色に変更 */
 }
 
 /* 次のセッション開始時間のスタイル */
 .timer-next-session {
     font-size: 18px;
-    color: #555;
+    color: #5d4037; /* コーヒーっぽい色に変更 */
     margin-bottom: 20px;
 }
 
@@ -47,9 +55,11 @@ body {
 .timer-input {
     font-size: 16px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #8d6e63; /* コーヒーっぽい色に変更 */
     border-radius: 5px;
     margin-bottom: 10px;
+    background-color: #d7ccc8; /* 入力フィールドの背景色をコーヒーっぽい色に変更 */
+    color: #3e2723; /* テキストの色をコーヒーっぽい色に変更 */
 }
 
 /* ボタンのスタイル */
@@ -57,7 +67,7 @@ body {
     font-size: 16px;
     padding: 10px 20px;
     color: #fff;
-    background-color: #007bff;
+    background-color: #6d4c41; /* ボタンの背景色をコーヒーっぽい色に変更 */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -65,5 +75,15 @@ body {
 }
 
 .timer-button:hover {
-    background-color: #0056b3;
+    background-color: #4e342e; /* ホバー時のボタンの背景色をコーヒーっぽい色に変更 */
+}
+
+/* タイトルのスタイル */
+.app-title {
+    font-family: 'Georgia', serif; /* おしゃれなフォントに変更 */
+    font-size: 36px;
+    color: #3e2723; /* コーヒーっぽい色に変更 */
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 影を追加 */
 }
